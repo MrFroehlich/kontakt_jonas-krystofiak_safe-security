@@ -1,24 +1,53 @@
-/* Bestehende Basis-CSS */
-
+/* Grundlegendes Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
+/* Body als Flex-Container, Sticky Footer */
+html, body {
+  height: 100%;
+  overflow-x: hidden; /* Kein horizontaler Scrollbalken */
   font-family: 'Roboto', sans-serif;
   background-color: #1f1f1f;
   color: #ffffff;
   line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
+/* Hauptinhalt wächst, Footer bleibt unten */
+main {
+  flex: 1 0 auto;
+  max-width: 1000px;  /* Maximalbreite */
+  width: 90%;         /* Flexible Breite */
+  margin: 40px auto;  /* Zentriert, mit Abstand oben und unten */
+  padding: 20px;
+  color: #e0e0e0;
+  background-color: #1f1f1f;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  box-sizing: border-box;
 }
 
+/* Footer */
+footer.footer {
+  flex-shrink: 0;
+  background-color: #181818;
+  color: #aaaaaa;
+  text-align: center;
+  padding: 20px 10px;
+  font-size: 0.9rem;
+  border-top: 2px solid #333;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Hero2 Sektion */
 .hero2 {
   background: linear-gradient(to right, #24415b, #24415b);
   color: white;
@@ -35,30 +64,7 @@ body {
 
 .hero2 p {
   font-size: 1.2rem;
-}
-
-.footer {
-  background-color: #181818;
-  color: #aaaaaa;
-  text-align: center;
-  padding: 20px 10px;
-  font-size: 0.9rem;
-  border-top: 2px solid #333;
-}
-
-/* Main Content - WICHTIG: statt Inline Styles in HTML hier her */
-
-main {
-  max-width: 1000px;
-  width: 90%;
-  margin: 40px auto; /* zentriert, statt links mit margin-left */
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  color: #e0e0e0;
-  background-color: #1f1f1f;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  margin: 0 20px 50px;
 }
 
 /* Überschriften */
@@ -73,96 +79,52 @@ h3 {
   margin-bottom: 0.5em;
 }
 
-/* Links in Absätzen */
+/* Links */
 a {
   color: #19ace6;
+  word-wrap: break-word; /* Lange Links umbrechen */
   text-decoration: none;
 }
-a:hover {
+
+a:hover, a:focus {
   text-decoration: underline;
 }
 
-/* Sections mit margin */
-section {
-  margin-bottom: 25px;
-  color: #e0e0e0;
-}
-
-
-/* Fade-In Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* Fade-in Animation */
 .fade-in {
-  animation: fadeIn 1s ease forwards;
+  animation: fadeInAnimation ease 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
+@keyframes fadeInAnimation {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
 
+/* Media Queries für kleine Bildschirme */
+@media (max-width: 600px) {
 
-/* Responsive Anpassungen */
-@media (max-width: 768px) {
-  /* Hero Schrift kleiner und padding weniger */
-  .hero2 {
-    padding: 25px 15px;
-  }
-  .hero2 h1 {
-    font-size: 2rem;
-  }
-  .hero2 p {
-    font-size: 1rem;
-    margin-bottom: 30px;
-  }
-  
-  /* Main soll fast die volle Breite einnehmen, margin und padding kleiner */
   main {
     width: 95%;
     margin: 20px auto;
-    padding: 15px;
-    font-size: 0.95rem;
-  }
-  
-  /* Überschriften kleiner */
-  h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1em;
-  }
-  h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.5em;
-  }
-  
-  /* Footer padding weniger, Schrift kleiner */
-  .footer {
-    padding: 15px 10px;
-    font-size: 0.8rem;
-  }
-}
-
-/* Noch kleinere Geräte (Handys im Hochformat) */
-@media (max-width: 400px) {
-  main {
-    width: 98%;
-    padding: 10px;
-    font-size: 0.9rem;
-  }
-  .hero2 h1 {
-    font-size: 1.6rem;
-  }
-  .hero2 p {
-    font-size: 0.9rem;
-  }
-  h2 {
-    font-size: 1.3rem;
-  }
-  h3 {
     font-size: 1rem;
   }
+
+  .hero2 h1 {
+    font-size: 1.8rem;
+    margin: 0 10px 15px;
+  }
+
+  .hero2 p {
+    font-size: 1rem;
+    margin: 0 10px 30px;
+  }
+
+}
+
+/* Optional: Verhindert, dass Bilder oder andere Inhalte den Container sprengen */
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
 }
