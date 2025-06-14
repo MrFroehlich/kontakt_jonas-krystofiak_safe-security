@@ -23,7 +23,7 @@ main {
   flex: 1 0 auto;
   max-width: 1000px;  /* Maximalbreite */
   width: 90%;         /* Flexible Breite */
-  margin: 40px auto;  /* Zentriert, mit Abstand oben und unten */
+  margin: 40px 0 40px 40px; /* oben, rechts, unten, links */
   padding: 20px;
   color: #e0e0e0;
   background-color: #1f1f1f;
