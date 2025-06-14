@@ -88,6 +88,25 @@ section {
   color: #e0e0e0;
 }
 
+
+/* Fade-In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+
+
 /* Responsive Anpassungen */
 @media (max-width: 768px) {
   /* Hero Schrift kleiner und padding weniger */
